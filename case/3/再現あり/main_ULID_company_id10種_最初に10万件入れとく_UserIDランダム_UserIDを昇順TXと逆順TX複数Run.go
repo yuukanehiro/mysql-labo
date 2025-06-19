@@ -18,8 +18,8 @@ import (
 
 type DemoDeadlock struct {
 	ID        string `gorm:"primaryKey"`
-	CompanyID string `gorm:"index:idx_company_user,unique"`
-	UserID    string `gorm:"index:idx_company_user,unique"`
+	CompanyID string `gorm:"company_id:index:idx_company_id"`
+	UserID    string `gorm:"user_id;index:idx_user_id,unique"`
 	Data      string
 }
 
@@ -30,7 +30,7 @@ var (
 
 func main() {
 	runtime.GOMAXPROCS(10)
-	dsn := "root:root@tcp(127.0.0.1:3306)/test_db?parseTime=true&loc=Local"
+	dsn := "root:root@tcp(127.0.0.1:3316)/test_db?parseTime=true&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("failed to connect database: %v", err)
