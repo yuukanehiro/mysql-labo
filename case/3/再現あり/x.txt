@@ -1,18 +1,18 @@
 
 =====================================
-2025-06-19 02:02:24 281472698212224 INNODB MONITOR OUTPUT
+2025-06-19 02:46:42 281472698212224 INNODB MONITOR OUTPUT
 =====================================
-Per second averages calculated from the last 25 seconds
+Per second averages calculated from the last 28 seconds
 -----------------
 BACKGROUND THREAD
 -----------------
-srv_master_thread loops: 12 srv_active, 0 srv_shutdown, 238 srv_idle
+srv_master_thread loops: 161 srv_active, 0 srv_shutdown, 2742 srv_idle
 srv_master_thread log flush and writes: 0
 ----------
 SEMAPHORES
 ----------
-OS WAIT ARRAY INFO: reservation count 1452
-OS WAIT ARRAY INFO: signal count 1413
+OS WAIT ARRAY INFO: reservation count 12422
+OS WAIT ARRAY INFO: signal count 10466
 RW-shared spins 0, rounds 0, OS waits 0
 RW-excl spins 0, rounds 0, OS waits 0
 RW-sx spins 0, rounds 0, OS waits 0
@@ -20,71 +20,63 @@ Spin rounds per wait: 0.00 RW-shared, 0.00 RW-excl, 0.00 RW-sx
 ------------------------
 LATEST DETECTED DEADLOCK
 ------------------------
-2025-06-19 02:01:45 281472725499776
+2025-06-19 02:18:44 281472725499776
 *** (1) TRANSACTION:
-TRANSACTION 2360, ACTIVE 1 sec inserting
+TRANSACTION 2660, ACTIVE 3 sec inserting
 mysql tables in use 1, locked 1
-LOCK WAIT 47 lock struct(s), heap size 8312, 694 row lock(s), undo log entries 12069
-MySQL thread id 13, OS thread handle 281472569147264, query id 521 192.168.128.1 root update
-INSERT INTO `demo_deadlocks` (`id`,`company_id`,`user_id`,`data`) VALUES ('01JY2YQCG0BVATA9BQXH22KJ02','01JY2YQ9GXSZSVHTY9V3EGC9PQ','01JY2YQCG0BVATA9BQXW38FC5J','DATA-1750298504731297000-19799'),('01JY2YQCG0BVATA9BQZRGZHN7B','01JY2YQ9GXSZSVHTY9V3EGC9PQ','01JY2YQCG0BVATA9BQZWHQKKJM','DATA-1750298504731297000-15039'),('01JY2YQCG0BVATA9BR03M9CMRD','01JY2YQ9GXSZSVHTY9V3EGC9PQ','01JY2YQCG0BVATA9BR0791FBEF','DATA-1750298504731297000-54157'),('01JY2YQCG0BVATA9BR0AQ2YVVC','01JY2YQ9GXSZSVHTY9V3EGC9PQ','01JY2YQCG0BVATA9BR0GCHHTAS','DATA-1750298504731297000-67366'),('01JY2YQCG0BVATA9BR0QHHWCG1','01JY2YQ9GXSZSVHTY9V3EGC9PQ','01JY2YQCG0BVATA9BR0RASC1BN','DATA-1750298504731297000-66730'),('01JY2YQCG0BVATA9BR0V8NNQHX','01JY2YQ9GXSZSVHTY9V3EGC9PQ','01JY2YQCG0BVATA9BR0WDRA7G9','DATA-1750298504731297000-84097'),('01JY2YQCG0BVATA9BR1422EHB1','01JY2YQ9GXSZSVHTY9V3EGC9PQ','01JY2YQCG0BVATA9BR14X1J6JJ','DATA-1750298504731297000-73984'),('0
+LOCK WAIT 8 lock struct(s), heap size 1128, 7 row lock(s), undo log entries 17511
+MySQL thread id 252, OS thread handle 281472562806656, query id 6601 192.168.128.1 root update
+INSERT INTO `demo_deadlocks` (`id`,`company_id`,`user_id`,`data`) VALUES ('01JY2ZPFM9FR0KV378N185X1RR','01JY2ZPAKAHGWQCAA14GP3H5YN','01JY2ZPFM9FR0KV378N4SX8Z9Y','DATA-1750299521638502000-39075'),('01JY2ZPFM9FR0KV378PPBYJ9JX','01JY2ZPAKAHGWQCAA14GP3H5YN','01JY2ZPFM9FR0KV378PT1D8JZH','DATA-1750299521638502000-43170'),('01JY2ZPFM9FR0KV378Q091VR06','01JY2ZPAKAHGWQCAA14GP3H5YN','01JY2ZPFM9FR0KV378Q5GE0KNF','DATA-1750299521638502000-85410'),('01JY2ZPFM9FR0KV378QGX8TFJV','01JY2ZPAKAHGWQCAA14GP3H5YN','01JY2ZPFM9FR0KV378QGY3BAMY','DATA-1750299521638502000-39145'),('01JY2ZPFM9FR0KV378QP5GT9EF','01JY2ZPAKAHGWQCAA14GP3H5YN','01JY2ZPFM9FR0KV378QPKM0FES','DATA-1750299521638502000-99453'),('01JY2ZPFM9FR0KV378QW6AJ2RG','01JY2ZPAKAHGWQCAA14GP3H5YN','01JY2ZPFM9FR0KV378QYC4XX6Y','DATA-1750299521638502000-76908'),('01JY2ZPFM9FR0KV378R7HYMQR3','01JY2ZPAKAHGWQCAA14GP3H5YN','01JY2ZPFM9FR0KV378R7KWYVHG','DATA-1750299521638502000-20604'),(
 
 *** (1) HOLDS THE LOCK(S):
-RECORD LOCKS space id 4 page no 2248 n bits 192 index PRIMARY of table `test_db`.`demo_deadlocks` trx id 2360 lock_mode X locks rec but not gap
-Record lock, heap no 114 PHYSICAL RECORD: n_fields 6; compact format; info bits 0
- 0: len 26; hex 30314a5932595143473042564154413942524631394256325057; asc 01JY2YQCG0BVATA9BRF19BV2PW;;
- 1: len 6; hex 000000000938; asc      8;;
- 2: len 7; hex 810000013e28b8; asc     >( ;;
- 3: len 26; hex 30314a59325951394758535a5356485459395633454743395051; asc 01JY2YQ9GXSZSVHTY9V3EGC9PQ;;
- 4: len 26; hex 30314a593259514347304256415441394252463241564854324e; asc 01JY2YQCG0BVATA9BRF2AVHT2N;;
- 5: len 30; hex 444154412d313735303239383530343733313239373030302d3437373635; asc DATA-1750298504731297000-47765;;
+RECORD LOCKS space id 11 page no 2183 n bits 184 index PRIMARY of table `test_db`.`demo_deadlocks` trx id 2660 lock_mode X locks rec but not gap
+Record lock, heap no 37 PHYSICAL RECORD: n_fields 6; compact format; info bits 0
+ 0: len 26; hex 30314a59325a50464d394652304b56333743303256594e325853; asc 01JY2ZPFM9FR0KV37C02VYN2XS;;
+ 1: len 6; hex 000000000a64; asc      d;;
+ 2: len 7; hex 82000001862841; asc      (A;;
+ 3: len 26; hex 30314a59325a50414b414847575143414131344750334835594e; asc 01JY2ZPAKAHGWQCAA14GP3H5YN;;
+ 4: len 26; hex 30314a59325a50464d394652304b5633374330334635444b4d41; asc 01JY2ZPFM9FR0KV37C03F5DKMA;;
+ 5: len 30; hex 444154412d313735303239393532313633383530323030302d3937393939; asc DATA-1750299521638502000-97999;;
 
 
 *** (1) WAITING FOR THIS LOCK TO BE GRANTED:
-RECORD LOCKS space id 4 page no 2251 n bits 136 index PRIMARY of table `test_db`.`demo_deadlocks` trx id 2360 lock_mode X locks rec but not gap waiting
-Record lock, heap no 2 PHYSICAL RECORD: n_fields 6; compact format; info bits 0
- 0: len 26; hex 30314a593259514347304256415441394252473351384531344e; asc 01JY2YQCG0BVATA9BRG3Q8E14N;;
- 1: len 6; hex 000000000931; asc      1;;
- 2: len 7; hex 82000001521bc8; asc     R  ;;
- 3: len 26; hex 30314a593259513947564a50474452564133355a48435039354e; asc 01JY2YQ9GVJPGDRVA35ZHCP95N;;
- 4: len 26; hex 30314a5932595143473042564154413942524737325432395758; asc 01JY2YQCG0BVATA9BRG72T29WX;;
- 5: len 29; hex 444154412d313735303239383530343732373231393030302d37353530; asc DATA-1750298504727219000-7550;;
+RECORD LOCKS space id 11 page no 2243 n bits 336 index idx_user_id of table `test_db`.`demo_deadlocks` trx id 2660 lock_mode X waiting
+Record lock, heap no 238 PHYSICAL RECORD: n_fields 2; compact format; info bits 0
+ 0: len 26; hex 30314a59325a50464d394652304b56333743394b424d3341354a; asc 01JY2ZPFM9FR0KV37C9KBM3A5J;;
+ 1: len 26; hex 30314a59325a50464d394652304b563337433946454733534d31; asc 01JY2ZPFM9FR0KV37C9FEG3SM1;;
 
 
 *** (2) TRANSACTION:
-TRANSACTION 2353, ACTIVE 1 sec inserting
+TRANSACTION 2657, ACTIVE 3 sec inserting
 mysql tables in use 1, locked 1
-LOCK WAIT 27 lock struct(s), heap size 3488, 792 row lock(s), undo log entries 11071
-MySQL thread id 21, OS thread handle 281472563863424, query id 522 192.168.128.1 root update
-INSERT INTO `demo_deadlocks` (`id`,`company_id`,`user_id`,`data`) VALUES ('01JY2YQCG0BVATA9BRY9TYWCZX','01JY2YQ9GVJPGDRVA35ZHCP95N','01JY2YQCG0BVATA9BRYBX6WZ23','DATA-1750298504727219000-8087'),('01JY2YQCG0BVATA9BRY0HJP800','01JY2YQ9GVJPGDRVA35ZHCP95N','01JY2YQCG0BVATA9BRY2NYC55X','DATA-1750298504727219000-87658'),('01JY2YQCG0BVATA9BRXRDX88K8','01JY2YQ9GVJPGDRVA35ZHCP95N','01JY2YQCG0BVATA9BRXSBS36CJ','DATA-1750298504727219000-20414'),('01JY2YQCG0BVATA9BRXF07W8SY','01JY2YQ9GVJPGDRVA35ZHCP95N','01JY2YQCG0BVATA9BRXHF24F50','DATA-1750298504727219000-3963'),('01JY2YQCG0BVATA9BRXAJG6FSR','01JY2YQ9GVJPGDRVA35ZHCP95N','01JY2YQCG0BVATA9BRXD9DRZXT','DATA-1750298504727219000-35532'),('01JY2YQCG0BVATA9BRX2D91NEQ','01JY2YQ9GVJPGDRVA35ZHCP95N','01JY2YQCG0BVATA9BRX2V2550V','DATA-1750298504727219000-6080'),('01JY2YQCG0BVATA9BRWT97GDSE','01JY2YQ9GVJPGDRVA35ZHCP95N','01JY2YQCG0BVATA9BRWWZ4GKRA','DATA-1750298504727219000-15809'),('01JY
+LOCK WAIT 134 lock struct(s), heap size 24696, 4 row lock(s), undo log entries 18482
+MySQL thread id 243, OS thread handle 281472568090496, query id 6602 192.168.128.1 root update
+INSERT INTO `demo_deadlocks` (`id`,`company_id`,`user_id`,`data`) VALUES ('01JY2ZPFM9FR0KV37FGAB53G79','01JY2ZPAKTHHP0XDXRW2XKWQ9R','01JY2ZPFM9FR0KV37FGBEBPRHY','DATA-1750299521623783000-89641'),('01JY2ZPFM9FR0KV37FG1HVBPF0','01JY2ZPAKTHHP0XDXRW2XKWQ9R','01JY2ZPFM9FR0KV37FG4JZ517T','DATA-1750299521623783000-43513'),('01JY2ZPFM9FR0KV37FFWE54RMQ','01JY2ZPAKTHHP0XDXRW2XKWQ9R','01JY2ZPFM9FR0KV37FFXCKSTJP','DATA-1750299521623783000-89003'),('01JY2ZPFM9FR0KV37FFNVDM132','01JY2ZPAKTHHP0XDXRW2XKWQ9R','01JY2ZPFM9FR0KV37FFR5351DA','DATA-1750299521623783000-47386'),('01JY2ZPFM9FR0KV37FFHHFHVE6','01JY2ZPAKTHHP0XDXRW2XKWQ9R','01JY2ZPFM9FR0KV37FFMSN5WAC','DATA-1750299521623783000-31662'),('01JY2ZPFM9FR0KV37FF8SX22W2','01JY2ZPAKTHHP0XDXRW2XKWQ9R','01JY2ZPFM9FR0KV37FFBMZZC5X','DATA-1750299521623783000-81541'),('01JY2ZPFM9FR0KV37FF3XRC726','01JY2ZPAKTHHP0XDXRW2XKWQ9R','01JY2ZPFM9FR0KV37FF5SW9HZM','DATA-1750299521623783000-2489'),('
 
 *** (2) HOLDS THE LOCK(S):
-RECORD LOCKS space id 4 page no 2251 n bits 136 index PRIMARY of table `test_db`.`demo_deadlocks` trx id 2353 lock_mode X locks rec but not gap
-Record lock, heap no 2 PHYSICAL RECORD: n_fields 6; compact format; info bits 0
- 0: len 26; hex 30314a593259514347304256415441394252473351384531344e; asc 01JY2YQCG0BVATA9BRG3Q8E14N;;
- 1: len 6; hex 000000000931; asc      1;;
- 2: len 7; hex 82000001521bc8; asc     R  ;;
- 3: len 26; hex 30314a593259513947564a50474452564133355a48435039354e; asc 01JY2YQ9GVJPGDRVA35ZHCP95N;;
- 4: len 26; hex 30314a5932595143473042564154413942524737325432395758; asc 01JY2YQCG0BVATA9BRG72T29WX;;
- 5: len 29; hex 444154412d313735303239383530343732373231393030302d37353530; asc DATA-1750298504727219000-7550;;
+RECORD LOCKS space id 11 page no 2243 n bits 336 index idx_user_id of table `test_db`.`demo_deadlocks` trx id 2657 lock_mode X locks rec but not gap
+Record lock, heap no 238 PHYSICAL RECORD: n_fields 2; compact format; info bits 0
+ 0: len 26; hex 30314a59325a50464d394652304b56333743394b424d3341354a; asc 01JY2ZPFM9FR0KV37C9KBM3A5J;;
+ 1: len 26; hex 30314a59325a50464d394652304b563337433946454733534d31; asc 01JY2ZPFM9FR0KV37C9FEG3SM1;;
 
 
 *** (2) WAITING FOR THIS LOCK TO BE GRANTED:
-RECORD LOCKS space id 4 page no 2248 n bits 192 index PRIMARY of table `test_db`.`demo_deadlocks` trx id 2353 lock_mode X locks rec but not gap waiting
-Record lock, heap no 114 PHYSICAL RECORD: n_fields 6; compact format; info bits 0
- 0: len 26; hex 30314a5932595143473042564154413942524631394256325057; asc 01JY2YQCG0BVATA9BRF19BV2PW;;
- 1: len 6; hex 000000000938; asc      8;;
- 2: len 7; hex 810000013e28b8; asc     >( ;;
- 3: len 26; hex 30314a59325951394758535a5356485459395633454743395051; asc 01JY2YQ9GXSZSVHTY9V3EGC9PQ;;
- 4: len 26; hex 30314a593259514347304256415441394252463241564854324e; asc 01JY2YQCG0BVATA9BRF2AVHT2N;;
- 5: len 30; hex 444154412d313735303239383530343733313239373030302d3437373635; asc DATA-1750298504731297000-47765;;
+RECORD LOCKS space id 11 page no 2183 n bits 184 index PRIMARY of table `test_db`.`demo_deadlocks` trx id 2657 lock_mode X locks rec but not gap waiting
+Record lock, heap no 37 PHYSICAL RECORD: n_fields 6; compact format; info bits 0
+ 0: len 26; hex 30314a59325a50464d394652304b56333743303256594e325853; asc 01JY2ZPFM9FR0KV37C02VYN2XS;;
+ 1: len 6; hex 000000000a64; asc      d;;
+ 2: len 7; hex 82000001862841; asc      (A;;
+ 3: len 26; hex 30314a59325a50414b414847575143414131344750334835594e; asc 01JY2ZPAKAHGWQCAA14GP3H5YN;;
+ 4: len 26; hex 30314a59325a50464d394652304b5633374330334635444b4d41; asc 01JY2ZPFM9FR0KV37C03F5DKMA;;
+ 5: len 30; hex 444154412d313735303239393532313633383530323030302d3937393939; asc DATA-1750299521638502000-97999;;
 
-*** WE ROLL BACK TRANSACTION (2)
+*** WE ROLL BACK TRANSACTION (1)
 ------------
 TRANSACTIONS
 ------------
-Trx id counter 2368
-Purge done for trx's n:o < 2368 undo n:o < 0 state: running but idle
-History list length 0
+Trx id counter 2825
+Purge done for trx's n:o < 2825 undo n:o < 0 state: running but idle
+History list length 22
 LIST OF TRANSACTIONS FOR EACH SESSION:
 ---TRANSACTION 562948159164416, not started
 0 lock struct(s), heap size 1128, 0 row lock(s)
@@ -109,8 +101,8 @@ I/O thread 8 state: waiting for completed aio requests (write thread)
 Pending normal aio reads: [0, 0, 0, 0] , aio writes: [0, 0, 0, 0] ,
  ibuf aio reads:
 Pending flushes (fsync) log: 0; buffer pool: 0
-892 OS file reads, 14053 OS file writes, 6473 OS fsyncs
-0.00 reads/s, 0 avg bytes/read, 1.62 writes/s, 0.77 fsyncs/s
+2925 OS file reads, 167061 OS file writes, 79285 OS fsyncs
+0.50 reads/s, 15213 avg bytes/read, 457.69 writes/s, 219.47 fsyncs/s
 -------------------------------------
 INSERT BUFFER AND ADAPTIVE HASH INDEX
 -------------------------------------
@@ -119,58 +111,58 @@ merged operations:
  insert 0, delete mark 0, delete 0
 discarded operations:
  insert 0, delete mark 0, delete 0
-Hash table size 34679, node heap has 0 buffer(s)
-Hash table size 34679, node heap has 0 buffer(s)
-Hash table size 34679, node heap has 4 buffer(s)
-Hash table size 34679, node heap has 2 buffer(s)
-Hash table size 34679, node heap has 0 buffer(s)
+Hash table size 34679, node heap has 1 buffer(s)
+Hash table size 34679, node heap has 1 buffer(s)
+Hash table size 34679, node heap has 1 buffer(s)
+Hash table size 34679, node heap has 1 buffer(s)
 Hash table size 34679, node heap has 0 buffer(s)
 Hash table size 34679, node heap has 1 buffer(s)
 Hash table size 34679, node heap has 1 buffer(s)
-0.00 hash searches/s, 0.00 non-hash searches/s
+Hash table size 34679, node heap has 1 buffer(s)
+0.00 hash searches/s, 14505.62 non-hash searches/s
 ---
 LOG
 ---
-Log sequence number          102895161
-Log buffer assigned up to    102895161
-Log buffer completed up to   102895161
-Log written up to            102895161
-Log flushed up to            102895161
-Added dirty pages up to      102895161
-Pages flushed up to          102895161
-Last checkpoint at           102895161
-Log minimum file id is       9
-Log maximum file id is       31
-9009 log i/o's done, 0.12 log i/o's/second
+Log sequence number          894053639
+Log buffer assigned up to    894053639
+Log buffer completed up to   894053639
+Log written up to            894053639
+Log flushed up to            894053639
+Added dirty pages up to      894053639
+Pages flushed up to          894053639
+Last checkpoint at           894053639
+Log minimum file id is       246
+Log maximum file id is       273
+109104 log i/o's done, 266.71 log i/o's/second
 ----------------------
 BUFFER POOL AND MEMORY
 ----------------------
 Total large memory allocated 0
-Dictionary memory allocated 537604
+Dictionary memory allocated 537605
 Buffer pool size   8192
-Free buffers       3915
-Database pages     4269
-Old database pages 1555
+Free buffers       1024
+Database pages     7161
+Old database pages 2623
 Modified db pages  0
 Pending reads      0
 Pending writes: LRU 0, flush list 0, single page 0
-Pages made young 1, not young 0
-0.00 youngs/s, 0.00 non-youngs/s
-Pages read 870, created 3399, written 3758
-0.00 reads/s, 0.00 creates/s, 1.16 writes/s
-Buffer pool hit rate 1000 / 1000, young-making rate 0 / 1000 not 0 / 1000
+Pages made young 2577, not young 55126
+3.56 youngs/s, 66.03 non-youngs/s
+Pages read 2903, created 38405, written 44195
+0.50 reads/s, 92.57 creates/s, 149.56 writes/s
+Buffer pool hit rate 1000 / 1000, young-making rate 0 / 1000 not 1 / 1000
 Pages read ahead 0.00/s, evicted without access 0.00/s, Random read ahead 0.00/s
-LRU len: 4269, unzip_LRU len: 0
-I/O sum[0]:cur[0], unzip sum[0]:cur[0]
+LRU len: 7161, unzip_LRU len: 0
+I/O sum[4578]:cur[0], unzip sum[0]:cur[0]
 --------------
 ROW OPERATIONS
 --------------
 0 queries inside InnoDB, 0 queries in queue
 0 read views open inside InnoDB
 Process ID=1, Main thread ID=281472619503488 , state=sleeping
-Number of rows inserted 214769, updated 34, deleted 0, read 34
-0.00 inserts/s, 0.00 updates/s, 0.00 deletes/s, 0.00 reads/s
-Number of system rows inserted 54, updated 369, deleted 30, read 5748
+Number of rows inserted 2799929, updated 1940, deleted 0, read 52440
+7129.67 inserts/s, 12.89 updates/s, 0.00 deletes/s, 12.89 reads/s
+Number of system rows inserted 269, updated 542, deleted 226, read 6779
 0.00 inserts/s, 0.00 updates/s, 0.00 deletes/s, 0.00 reads/s
 ----------------------------
 END OF INNODB MONITOR OUTPUT
